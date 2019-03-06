@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
                     textView.setText(Integer.toString(counter));
                     counter--;
                     handler.postDelayed(this,1000);
+
+                    if(counter==0){
+                        counter=99;
+                    }
             }
         });
     }
