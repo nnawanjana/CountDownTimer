@@ -3,6 +3,7 @@ package lk.ac.kln.countdowntimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -14,26 +15,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        countDown();
+        //countDown();
     }
 
-    private void countDown(){
-        final TextView textView=findViewById(R.id.textView);
+    protected void countdown(View view) {
+        final TextView textView = findViewById(R.id.textView);
 
-        final Handler handler=new Handler();
+        final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
 
-                    textView.setText(Integer.toString(counter));
-                    counter--;
-                    handler.postDelayed(this,1000);
+                textView.setText(Integer.toString(counter));
+                counter--;
+                handler.postDelayed(this, 100);
 
-                    if(counter==0){
-                        counter=99;
-                    }
+                if (counter == 0) {
+                    counter = 99;
+                }
             }
+
         });
     }
+
 
 }
