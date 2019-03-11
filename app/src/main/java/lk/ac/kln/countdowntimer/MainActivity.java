@@ -10,15 +10,26 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     private int counter=99;
+    private static final String CURRENT_COUNTER ="counter";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //countDown();
+        if(savedInstanceState != null){
+            counter=savedInstanceState.getInt(CURRENT_COUNTER);
+        }
+        countdown();
     }
 
-    protected void countdown(View view) {
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt(CURRENT_COUNTER, counter);
+    }
+
+
+    protected void countdown() {
         final TextView textView = findViewById(R.id.textView);
 
         final Handler handler = new Handler();
@@ -36,7 +47,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+        ;
+
     }
+
 
 
 }
