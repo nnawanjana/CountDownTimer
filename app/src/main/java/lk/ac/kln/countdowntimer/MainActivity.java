@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState !=null){
             counter = savedInstanceState.getInt(CURRENT_COUNTER);
         }
-        running = true;
+        //running = true;
         countDown();
     }
 
@@ -50,10 +50,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    protected void startCounter(View view){
+        running=true;
+    }
+
+    protected void stopCounter(View view){
+        running=false;
+    }
 
     @Override
-    public void onStart(){
-        super.onStart();
+    public void onPause(){
+        super.onPause();
+    }
+
+
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        running=true;
     }
 
     @Override
