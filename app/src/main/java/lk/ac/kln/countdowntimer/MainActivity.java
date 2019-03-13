@@ -58,11 +58,19 @@ public class MainActivity extends AppCompatActivity {
         running=false;
     }
 
+
+
     @Override
     public void onPause(){
         super.onPause();
+        running=false;
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        running=true;
+    }
 
     @Override
     public void onRestart(){
